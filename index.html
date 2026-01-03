@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OleTales</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>OleTales</h1>
+    <nav>
+      <a href="write.html">Write a Story</a>
+    </nav>
+  </header>
+
+  <section id="filters">
+    <button onclick="filterStories('all')">All</button>
+    <button onclick="filterStories('ai')">🤖 AI-assisted</button>
+    <button onclick="filterStories('human')">✍️ Human-only</button>
+  </section>
+
+  <main id="story-list">
+    <p>Loading stories...</p>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+    }
+
+    filterStories('all');
+  </script>
+</body>
+</html>
