@@ -15,21 +15,21 @@
   </header>
 
   <main>
-    <form id="story-form">
-      <label>Story Title:</label>
-      <input type="text" id="title" required>
+   <!--Author registration-->
 
-      <label>Story Content:</label>
-      <textarea id="content" rows="10" required></textarea>
+  <div id="authSection">
+  <h2>Author Registration</h2>
 
-      <label>Story Type:</label>
-      <select id="type">
-        <option value="human">Ole Writing</option>
-        <option value="ai"></option> AI-assisted</option>
-      </select>
+  <input id="name" placeholder="Full Name">
+  <input id="penName" placeholder="Pen Name">
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
 
-      <button type="submit">Save Story</button>
-    </form>
+  <button onclick="registerAuthor()">Register</button>
+  <button onclick="loginAuthor()">Login</button>
+
+  <p id="status"></p>
+</div>
   </main>
 
   <script src="app.js"></script>

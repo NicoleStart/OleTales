@@ -20,61 +20,15 @@
     <p>OleTales separates <strong>AI-assisted writing</strong> and <strong>human-written stories</strong>. Read what you trust. Write how you choose.</p>
   </section>
 
-  <!--Author registration-->
-
-  <div id="authSection">
-  <h2>Author Registration</h2>
-
-  <input id="name" placeholder="Full Name">
-  <input id="penName" placeholder="Pen Name">
-  <input id="email" type="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-
-  <button onclick="registerAuthor()">Register</button>
-  <button onclick="loginAuthor()">Login</button>
-
-  <p id="status"></p>
-</div>
-
 
   <!-- TABS -->
-  <section id="tabs">
-    <button class="tab-btn active" onclick="showTab('ai', this)">AI</button>
-    <button class="tab-btn" onclick="showTab('human', this)">Ole Stories</button>
-  </section>
+ <button onclick="goToUpload()">Ole</button>
 
-  <!-- LIBRARY -->
-  <main id="library">
-    <div id="story-list"><p>Loading stories…</p></div>
-  </main>
-
-  <!-- READER PAGE -->
-  <section id="reader" class="hidden">
-    <button id="back-btn">← Back to Library</button>
-    <h1 id="reader-title"></h1>
-    <span id="reader-type"></span>
-    <article id="reader-content"></article>
-  </section>
-
-  <!-- ADMIN PROFILE -->
-  <section id="admin-profile" class="hidden">
-    <button id="admin-back-btn">← Back</button>
-    <h1>Admin Profile</h1>
-    <div class="admin-card">
-      <h2 id="admin-name"></h2>
-      <p id="admin-role"></p>
-      <p id="admin-bio"></p>
-      <hr />
-      <div class="admin-actions">
-        <h3>Admin Actions</h3>
-        <ul>
-          <li>✔ Add stories</li>
-          <li>✔ Delete stories</li>
-          <li>✔ Moderate AI & Human content</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<script>
+  function goToUpload() {
+    window.location.href = "olesection.html";
+  }
+</script>
 
   <!-- FIREBASE SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
