@@ -70,6 +70,9 @@ function renderStories() {
     const card = document.createElement("div");
     card.className = "book";
 
+    card.addEventListener("click", () => openReader(story));
+
+
     card.innerHTML = `
       <div class="book-cover">
         <span class="book-type ${story.type}">
@@ -117,6 +120,18 @@ function attachDeleteEvents() {
   });
 }
 
+function openReader(story) {
+  document.getElementById("library").classList.add("hidden");
+  document.getElementById("reader").classList.remove("hidden");
+
+  document.getElementById("reader-title").textContent = story.title;
+  document.getElementById("reader-type").textContent =
+    story.type === "ai" ? "AI-assisted writing" : "Human-written";
+
+  document.getElementById("reader-content").textContent = story.content;
+}
+
+
 
 /* ---------- TABS ---------- */
 
@@ -137,4 +152,9 @@ function showTab(type, button) {
 document.addEventListener("DOMContentLoaded", () => {
   // Load AI stories by default
   renderStories("ai");
+});
+
+document.getElementById("back-btn").addEventListener("click", () => {
+  document.getElementById("reader").classList.add("hidden");
+  document.getElementById("library").classList.remove("hidden");
 });
