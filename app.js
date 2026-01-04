@@ -25,6 +25,8 @@ const firebaseConfig = {
   measurementId: "G-F7PJGRPPJ5"
 };
 
+
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -135,6 +137,42 @@ function attachDeleteEvents() {
     });
   });
 }
+
+/*Author registration*/
+
+function registerAuthor() {
+  const name = document.getElementById("name").value;
+  const penName = document.getElementById("penName").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((cred) => {
+      return db.collection("authors").doc(cred.user.uid).set({
+        name,
+        penName,
+        email,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    })
+    .then(() => {
+      status.innerText = "Author account created!";
+    })
+    .catch(err => alert(err.message));
+}
+
+function loginAuthor() {
+  auth.signInWithEmailAndPassword(email.value, password.value)
+    .catch(err => alert(err.message));
+}
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    status.innerText = "Logged in as author";
+    showBookUpload();
+  }
+});
+
 
 /* =========================
    READER PAGE
