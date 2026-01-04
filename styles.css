@@ -169,3 +169,39 @@ main {
   text-decoration: underline;
 }
 
+.hidden {
+  display: none;
+}
+
+/* Reader page */
+#reader {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  line-height: 1.7;
+}
+
+#back-btn {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+#reader-title {
+  margin-bottom: 0.3rem;
+}
+
+#reader-type {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+#reader-content {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  white-space: pre-line;
+}
+
+
