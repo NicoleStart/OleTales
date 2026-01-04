@@ -99,6 +99,24 @@ function renderStories() {
   if (IS_ADMIN) attachDeleteEvents();
 }
 
+function attachDeleteEvents() {
+  document.querySelectorAll(".delete-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+
+      const index = btn.dataset.index;
+      const confirmDelete = confirm(
+        "Are you sure you want to delete this story?"
+      );
+
+      if (confirmDelete) {
+        stories.splice(index, 1);
+        renderStories();
+      }
+    });
+  });
+}
+
 
 /* ---------- TABS ---------- */
 

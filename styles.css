@@ -154,3 +154,18 @@ main {
   color: #555;
   line-height: 1.4;
 }
+
+.delete-btn {
+  margin-top: 0.6rem;
+  background: none;
+  border: none;
+  color: #c0392b;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
+}
+
