@@ -92,3 +92,65 @@ main {
   color: #7D9A6D;
   font-weight: 600;
 }
+
+#story-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.book {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.book:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+/* Fake book cover */
+.book-cover {
+  height: 140px;
+  background: linear-gradient(135deg, #2F2F2F, #444);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0.6rem;
+}
+
+/* AI / Human label */
+.book-type {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+}
+
+.book-type.ai {
+  color: #4A90E2;
+}
+
+.book-type.human {
+  color: #7D9A6D;
+}
+
+/* Book info */
+.book-info {
+  padding: 0.8rem;
+}
+
+.book-title {
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+
+.book-blurb {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+}
