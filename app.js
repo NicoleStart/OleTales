@@ -11,13 +11,15 @@ const ADMIN_PROFILE = {
 };
 
 /* ---------- FIREBASE CONFIG ---------- */
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
+  apiKey: "AIzaSyDTc2lm15qGtCg3r5T36rQYStrltK_SlMk",
+  authDomain: "oletales-29202.firebaseapp.com",
+  projectId: "oletales-29202",
+  storageBucket: "oletales-29202.firebasestorage.app",
+  messagingSenderId: "540760611740",
+  appId: "1:540760611740:web:29b998a80d0089ea010659",
+  measurementId: "G-F7PJGRPPJ5"
 };
 
 // Initialize Firebase
