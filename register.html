@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write a Story - OleTales</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Write a Story</h1>
+    <nav>
+      <a href="index.html">Back to Stories</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="story-form">
+      <label>Story Title:</label>
+      <input type="text" id="title" required>
+
+      <label>Story Content:</label>
+      <textarea id="content" rows="10" required></textarea>
+
+      <label>Story Type:</label>
+      <select id="type">
+        <option value="human">Ole Writing</option>
+        <option value="ai"></option> AI-assisted</option>
+      </select>
+
+      <button type="submit">Save Story</button>
+    </form>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
