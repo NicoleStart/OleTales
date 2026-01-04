@@ -61,9 +61,20 @@
   <button class="tab-btn" onclick="showTab('human')">✍️ Human Stories</button>
 </section>
 
-<main id="story-list">
-  <p>Loading stories…</p>
+<main id="library">
+  <!-- your existing tabs + story list -->
 </main>
+
+
+<section id="reader" class="hidden">
+  <button id="back-btn">← Back to Library</button>
+
+  <h1 id="reader-title"></h1>
+  <span id="reader-type"></span>
+
+  <article id="reader-content"></article>
+</section>
+
 
 
   <script src="app.js"></script>
