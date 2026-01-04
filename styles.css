@@ -205,3 +205,34 @@ main {
 }
 
 
+.admin-card {
+  max-width: 500px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.admin-card h2 {
+  margin-bottom: 0.2rem;
+}
+
+.admin-card p {
+  color: #555;
+}
+
+.admin-actions ul {
+  padding-left: 1rem;
+}
+
+.admin-actions li {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+#admin-link {
+  font-size: 0.7rem;
+  color: #aaa;
+  cursor: pointer;
+}

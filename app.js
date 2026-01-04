@@ -5,6 +5,18 @@
 /* ---------- STORAGE ---------- */
 const IS_ADMIN = true; // ← set to false later for public users
 
+const ADMIN_PROFILE = {
+  name: "Nicole",
+  role: "Founder & Admin",
+  bio: "Managing OleTales content and platform direction."
+};
+
+if (IS_ADMIN) {
+  const adminLink = document.getElementById("admin-link");
+  adminLink.classList.remove("hidden");
+  adminLink.addEventListener("click", openAdminProfile);
+}
+
 
 // Get all stories
 function getStories() {
@@ -130,6 +142,25 @@ function openReader(story) {
 
   document.getElementById("reader-content").textContent = story.content;
 }
+
+function openAdminProfile() {
+  if (!IS_ADMIN) return;
+
+  document.getElementById("library").classList.add("hidden");
+  document.getElementById("reader").classList.add("hidden");
+  document.getElementById("admin-profile").classList.remove("hidden");
+
+  document.getElementById("admin-name").textContent = ADMIN_PROFILE.name;
+  document.getElementById("admin-role").textContent = ADMIN_PROFILE.role;
+  document.getElementById("admin-bio").textContent = ADMIN_PROFILE.bio;
+}
+
+
+document.getElementById("admin-back-btn").addEventListener("click", () => {
+  document.getElementById("admin-profile").classList.add("hidden");
+  document.getElementById("library").classList.remove("hidden");
+});
+
 
 
 

@@ -43,6 +43,8 @@
 
  <header>
   <h1>OleTales</h1>
+  <span id="admin-link" class="hidden">Admin</span>
+
   <a href="write.html">Write</a>
 </header>
 
@@ -75,6 +77,28 @@
   <article id="reader-content"></article>
 </section>
 
+<section id="admin-profile" class="hidden">
+  <button id="admin-back-btn">← Back</button>
+
+  <h1>Admin Profile</h1>
+
+  <div class="admin-card">
+    <h2 id="admin-name"></h2>
+    <p id="admin-role"></p>
+    <p id="admin-bio"></p>
+
+    <hr />
+
+    <div class="admin-actions">
+      <h3>Admin Actions</h3>
+      <ul>
+        <li>✔ Add stories</li>
+        <li>✔ Delete stories</li>
+        <li>✔ Moderate AI & Human content</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 
   <script src="app.js"></script>
