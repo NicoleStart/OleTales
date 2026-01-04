@@ -22,10 +22,27 @@
     <p>OleTales separates <strong>AI-assisted writing</strong> and <strong>human-written stories</strong>. Read what you trust. Write how you choose.</p>
   </section>
 
+  <!--Author registration-->
+
+  <div id="authSection">
+  <h2>Author Registration</h2>
+
+  <input id="name" placeholder="Full Name">
+  <input id="penName" placeholder="Pen Name">
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="registerAuthor()">Register</button>
+  <button onclick="loginAuthor()">Login</button>
+
+  <p id="status"></p>
+</div>
+
+
   <!-- TABS -->
   <section id="tabs">
-    <button class="tab-btn active" onclick="showTab('ai', this)">🤖 AI Stories</button>
-    <button class="tab-btn" onclick="showTab('human', this)">✍️ Human Stories</button>
+    <button class="tab-btn active" onclick="showTab('ai', this)">AI</button>
+    <button class="tab-btn" onclick="showTab('human', this)">Ole Stories</button>
   </section>
 
   <!-- LIBRARY -->
