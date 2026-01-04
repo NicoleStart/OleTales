@@ -214,3 +214,33 @@ if (IS_ADMIN) {
   const adminLink = document.getElementById("admin-link");
   if (adminLink) adminLink.addEventListener("click", openAdminProfile);
 }
+
+
+/*Book Upload*/
+
+function showBookUpload() {
+  document.getElementById("authSection").style.display = "none";
+  document.getElementById("bookSection").style.display = "block";
+}
+
+function uploadBook() {
+  const title = bookTitle.value;
+  const description = bookDesc.value;
+  const content = bookContent.value;
+  const user = auth.currentUser;
+
+  if (!user) return alert("Not logged in");
+
+  db.collection("books").add({
+    title,
+    description,
+    content,
+    authorId: user.uid,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(() => {
+    alert("Book uploaded!");
+    bookTitle.value = "";
+    bookDesc.value = "";
+    bookContent.value = "";
+  });
+}
