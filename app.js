@@ -208,3 +208,16 @@ if (form) {
     form.reset();
   });
 }
+
+const auth = firebase.auth();
+
+// Prompt admin to sign in (temporary for dev)
+if (IS_ADMIN) {
+  auth.signInWithEmailAndPassword("admin@oletales.com", "YOUR_PASSWORD")
+    .then((userCredential) => {
+      console.log("Admin signed in:", userCredential.user.uid);
+    })
+    .catch((error) => {
+      console.error("Sign in error:", error);
+    });
+}
