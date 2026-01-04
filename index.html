@@ -31,22 +31,30 @@
 </section>
 
 
-  <header>
-    <h1>OleTales</h1>
-    <nav>
-      <a href="write.html">Write a Story</a>
-    </nav>
-  </header>
+ <header>
+  <h1>OleTales</h1>
+  <a href="write.html">Write</a>
+</header>
 
-  <section id="filters">
-    <button onclick="filterStories('all')">All</button>
-    <button onclick="filterStories('ai')">🤖 AI-assisted</button>
-    <button onclick="filterStories('human')">✍️ Human-only</button>
-  </section>
+<section class="hero">
+  <h2>Stories, clearly told.</h2>
+  <p>
+    OleTales is a free writing and reading platform where stories are
+    transparently separated between <strong>AI-assisted writing</strong>
+    and <strong>human-only creativity</strong>.
+    Read what you trust. Write how you choose.
+  </p>
+</section>
 
-  <main id="story-list">
-    <p>Loading stories...</p>
-  </main>
+<section id="tabs">
+  <button class="tab-btn active" onclick="showTab('ai')">🤖 AI Stories</button>
+  <button class="tab-btn" onclick="showTab('human')">✍️ Human Stories</button>
+</section>
+
+<main id="story-list">
+  <p>Loading stories…</p>
+</main>
+
 
   <script src="app.js"></script>
   <script>
