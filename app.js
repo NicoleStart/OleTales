@@ -221,3 +221,12 @@ if (IS_ADMIN) {
       console.error("Sign in error:", error);
     });
 }
+
+if (auth.currentUser && auth.currentUser.uid === "ADMIN_UID") {
+  db.collection("stories").add({
+    title,
+    content,
+    type,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  });
+}
