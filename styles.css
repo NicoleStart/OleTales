@@ -41,3 +41,12 @@ button {
   margin: 0.5rem 0;
   cursor: pointer;
 }
+
+.notice {
+  background: #fff3cd;
+  padding: 0.75rem;
+  border-left: 4px solid #FF6F61;
+  margin: 1rem;
+  font-size: 0.9rem;
+}
+
