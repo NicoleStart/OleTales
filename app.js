@@ -244,3 +244,12 @@ function uploadBook() {
     bookContent.value = "";
   });
 }
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    console.log("Author logged in:", user.uid);
+    showBookUpload();
+  } else {
+    console.log("No author logged in");
+  }
+});
