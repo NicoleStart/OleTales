@@ -3,6 +3,8 @@
    ========================= */
 
 /* ---------- STORAGE ---------- */
+const IS_ADMIN = true; // ← set to false later for public users
+
 
 // Get all stories
 function getStories() {
@@ -50,43 +52,53 @@ if (form) {
 
 /* ---------- READING PAGE ---------- */
 
-function renderStories(type) {
+function renderStories() {
   const list = document.getElementById("story-list");
-  if (!list) return;
-
-  const stories = getStories();
-  const filtered = stories.filter(story => story.type === type);
-
   list.innerHTML = "";
 
+  const filtered =
+    currentFilter === "all"
+      ? stories
+      : stories.filter(s => s.type === currentFilter);
+
   if (filtered.length === 0) {
-    list.innerHTML = "<p>No stories here yet.</p>";
+    list.innerHTML = "<p>No stories yet.</p>";
     return;
   }
 
- filtered.forEach(story => {
-  const card = document.createElement("div");
-  card.className = "book";
+  filtered.forEach((story, index) => {
+    const card = document.createElement("div");
+    card.className = "book";
 
-  card.innerHTML = `
-    <div class="book-cover">
-      <span class="book-type ${story.type}">
-        ${story.type === "ai" ? "AI-assisted" : "Human-written"}
-      </span>
-    </div>
+    card.innerHTML = `
+      <div class="book-cover">
+        <span class="book-type ${story.type}">
+          ${story.type === "ai" ? "AI-assisted" : "Human-written"}
+        </span>
+      </div>
 
-    <div class="book-info">
-      <h3 class="book-title">${story.title}</h3>
-      <p class="book-blurb">
-        ${story.content.substring(0, 120)}...
-      </p>
-    </div>
-  `;
+      <div class="book-info">
+        <h3 class="book-title">${story.title}</h3>
+        <p class="book-blurb">
+          ${story.content.substring(0, 120)}...
+        </p>
 
-  list.appendChild(card);
-});
+        ${
+          IS_ADMIN
+            ? `<button class="delete-btn" data-index="${index}">
+                Delete
+              </button>`
+            : ""
+        }
+      </div>
+    `;
 
+    list.appendChild(card);
+  });
+
+  if (IS_ADMIN) attachDeleteEvents();
 }
+
 
 /* ---------- TABS ---------- */
 
