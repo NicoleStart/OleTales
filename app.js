@@ -64,20 +64,28 @@ function renderStories(type) {
     return;
   }
 
-  filtered.forEach(story => {
-    const card = document.createElement("div");
-    card.className = "story";
+ filtered.forEach(story => {
+  const card = document.createElement("div");
+  card.className = "book";
 
-    card.innerHTML = `
-      <h3>${story.title}</h3>
-      <span class="badge ${story.type}">
+  card.innerHTML = `
+    <div class="book-cover">
+      <span class="book-type ${story.type}">
         ${story.type === "ai" ? "AI-assisted" : "Human-written"}
       </span>
-      <p>${story.content.substring(0, 160)}...</p>
-    `;
+    </div>
 
-    list.appendChild(card);
-  });
+    <div class="book-info">
+      <h3 class="book-title">${story.title}</h3>
+      <p class="book-blurb">
+        ${story.content.substring(0, 120)}...
+      </p>
+    </div>
+  `;
+
+  list.appendChild(card);
+});
+
 }
 
 /* ---------- TABS ---------- */
