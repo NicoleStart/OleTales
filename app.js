@@ -2,17 +2,6 @@
    OLETALES APP LOGIC - SECURE VERSION
    ========================= */
 
-/* ---------- ADMIN SETUP ---------- */
-const IS_ADMIN = true; // set false for public readers
-const ADMIN_EMAIL = "onkel.nicole@gmail.com"; // your admin email
-const ADMIN_PASSWORD = "RememberMe@2025"; // your admin password
-let ADMIN_UID = ""; // will be set after sign in
-const ADMIN_PROFILE = {
-  name: "Nicole",
-  role: "Founder & Admin",
-  bio: "Managing OleTales content and platform direction."
-};
-
 /* ---------- FIREBASE CONFIG ---------- */
 
 const firebaseConfig = {
@@ -30,12 +19,23 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+
 const auth = firebase.auth();
 
-/* ---------- GLOBAL VARIABLES ---------- */
-let stories = [];
-let currentFilter = "ai";
 
+function registerAuthor() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("message");
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      message.innerText = "Author registered successfully!";
+    })
+    .catch(error => {
+      message.innerText = error.message;
+    });
+}
 
 /* =========================
    LOAD STORIES FROM FIRESTORE
