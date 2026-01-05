@@ -1,12 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Human Stories - OleTales</title>
 
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
-  </header>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      padding: 20px;
+    }
 
- 
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    #bookList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .book-card {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 6px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .book-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #cc5500;
+    }
+
+    .book-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Human-Written Stories</h1>
+  <div id="bookList"></div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDTc2lm15qGtCg3r5T36rQYStrltK_SlMk",
+      authDomain: "oletales-29202.firebaseapp.com",
+      projectId: "oletales-29202",
+      storageBucket: "oletales-29202.firebasestorage.app",
+      messagingSenderId: "540760611740",
+      appId: "1:540760611740:web:29b998a80d0089ea010659",
+      measurementId: "G-F7PJGRPPJ5"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const bookList = document.getElementById("bookList");
+
+    db.collection("books")
+      .where("type", "==", "human")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+
+          const card = document.createElement("div");
+          card.className = "book-card";
+
+          card.innerHTML = `
+            <h3>${data.title}</h3>
+            <p>${data.description || "No description yet."}</p>
+          `;
+
+          bookList.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching Human books:", error);
+      });
+  </script>
+
 </body>
 </html>
