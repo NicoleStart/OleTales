@@ -1,80 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <meta charset="UTF-8">
+  <title>AI Stories - OleTales</title>
 
-  <title>AI Stories</title>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    #bookList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .book-card {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 6px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .book-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #0077cc;
+    }
+
+    .book-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    
 
   <h1>AI-Written Stories</h1>
-  <p>If you can see this, the page loads!</p>
-
   <div id="bookList"></div>
 
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDTc2lm15qGtCg3r5T36rQYStrltK_SlMk",
+      authDomain: "oletales-29202.firebaseapp.com",
+      projectId: "oletales-29202",
+      storageBucket: "oletales-29202.firebasestorage.app",
+      messagingSenderId: "540760611740",
+      appId: "1:540760611740:web:29b998a80d0089ea010659",
+      measurementId: "G-F7PJGRPPJ5"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const bookList = document.getElementById("bookList");
+
+    db.collection("books")
+      .where("type", "==", "ai")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+
+          const card = document.createElement("div");
+          card.className = "book-card";
+
+          card.innerHTML = `
+            <h3>${data.title}</h3>
+            <p>${data.description || "No description yet."}</p>
+          `;
+
+          bookList.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching AI books:", error);
+      });
+  </script>
+
 </body>
-
-<script>
-// 🔥 Firebase config 
-const firebaseConfig = {
-  apiKey: "AIzaSyDTc2lm15qGtCg3r5T36rQYStrltK_SlMk",
-  authDomain: "oletales-29202.firebaseapp.com",
-  projectId: "oletales-29202",
-  storageBucket: "oletales-29202.firebasestorage.app",
-  messagingSenderId: "540760611740",
-  appId: "1:540760611740:web:29b998a80d0089ea010659",
-  measurementId: "G-F7PJGRPPJ5"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-// 📚 Reference to the container
-const bookList = document.getElementById("bookList");
-
-// Fetch AI books
-db.collection("books")
-  .where("type", "==", "ai")
-  .orderBy("createdAt", "desc")
-  .get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
-      const data = doc.data();
-
-      const card = document.createElement("div");
-      card.className = "book-card";
-      card.style.border = "1px solid #ccc";
-      card.style.padding = "15px";
-      card.style.margin = "10px";
-      card.style.borderRadius = "6px";
-
-      card.innerHTML = `
-        <h3>${data.title}</h3>
-        <p>${data.description || "No description yet."}</p>
-      `;
-
-      bookList.appendChild(card);
-    });
-  })
-  .catch(error => {
-    console.error("Error fetching AI books:", error);
-  });
-</script>
-
-<style>
-  .book-card h3 {
-    margin: 0 0 5px;
-    font-size: 1.2rem;
-  }
-
-  .book-card p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #555;
-  }
-</style>
-
-
 </html>
