@@ -42,24 +42,73 @@ function registerAuthor() {
 /* =========================
    LOAD STORIES FROM FIRESTORE
    ========================= */
-function loadStories() {
-  db.collection("stories")
-    .orderBy("createdAt", "desc")
-    .onSnapshot(snapshot => {
-      stories = [];
-      snapshot.forEach(doc => {
-        stories.push({ id: doc.id, ...doc.data() });
-      });
-      renderStories();
-    });
+
+
+function uploadBook() {
+  const title = document.getElementById("bookTitle").value;
+  const content = document.getElementById("bookContent").value;
+  const uploadMessage = document.getElementById("uploadMessage");
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    uploadMessage.innerText = "You must be logged in.";
+    return;
+  }
+
+  if (!title || !content) {
+    uploadMessage.innerText = "Please fill in all fields.";
+    return;
+  }
+
+  db.collection("books").add({
+    title: title,
+    content: content,
+    authorId: user.uid,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(() => {
+    uploadMessage.innerText = "Book uploaded successfully!";
+    document.getElementById("bookTitle").value = "";
+    document.getElementById("bookContent").value = "";
+  })
+  .catch(error => {
+    uploadMessage.innerText = error.message;
+  });
 }
 
-// Load initially
-loadStories();
 
 
+function uploadBook() {
+  console.log("Upload button clicked");
 
+  const title = document.getElementById("bookTitle").value;
+  const content = document.getElementById("bookContent").value;
+  const uploadMessage = document.getElementById("uploadMessage");
 
+  const user = auth.currentUser;
+  console.log("Current user:", user);
+
+  if (!user) {
+    uploadMessage.innerText = "You must be logged in.";
+    return;
+  }
+
+  db.collection("books").add({
+    title: title,
+    content: content,
+    authorId: user.uid,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(() => {
+    console.log("Upload success");
+    uploadMessage.innerText = "Book uploaded successfully!";
+  })
+  .catch(error => {
+    console.error("Upload error:", error);
+    uploadMessage.innerText = error.message;
+  });
+}
 
 
 
