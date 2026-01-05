@@ -22,7 +22,7 @@ const db = firebase.firestore();
 
 const auth = firebase.auth();
 
-
+//Author registration
 function registerAuthor() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -31,11 +31,13 @@ function registerAuthor() {
   auth.createUserWithEmailAndPassword(email, password)
     .then(() => {
       message.innerText = "Author registered successfully!";
+      document.getElementById("uploadSection").style.display = "block";
     })
     .catch(error => {
       message.innerText = error.message;
     });
 }
+
 
 /* =========================
    LOAD STORIES FROM FIRESTORE

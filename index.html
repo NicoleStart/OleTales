@@ -38,6 +38,8 @@
 
     <p><strong>Author and Library platforms coming soon.</strong></p>
 
+    <!-- Author Registration Section -->
+
     <h2>Author Registration</h2>
 
 <input id="email" type="email" placeholder="Author Email">
@@ -50,6 +52,24 @@
 
 <p id="message"></p>
 
+
+<hr>
+
+<!-- Book Upload Section -->
+
+<div id="uploadSection" style="display:none;">
+  <h2>Upload a Book</h2>
+
+  <input id="bookTitle" placeholder="Book Title">
+  <br><br>
+
+  <textarea id="bookContent" placeholder="Book content..." rows="6"></textarea>
+  <br><br>
+
+  <button type="button" onclick="uploadBook()">Upload Book</button>
+
+  <p id="uploadMessage"></p>
+</div>
 
     <p class="note">
       Currently in early development.<br>
@@ -67,6 +87,9 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 
   <!-- APP LOGIC -->
   <script src="app.js"></script>
